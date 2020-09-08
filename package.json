@@ -1,0 +1,35 @@
+{
+  "name": "nexus-federation-plugin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "start": "node dist/server",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && tsc",
+    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server"
+  },
+  "dependencies": {
+    "@nexus/schema": "0.15.0",
+    "apollo-server": "2.16.1",
+    "graphql": "15.3.0",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "@types/node": "12.12.54",
+    "@types/yup": "^0.29.6",
+    "prettier": "2.0.5",
+    "ts-node": "8.10.2",
+    "ts-node-dev": "1.0.0-pre.58",
+    "typescript": "4.0.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
+  },
+  "repository": "git@github.com:Spantree/nexus-federation-plugin.git",
+  "author": "Ahmed Elywa"
+}
