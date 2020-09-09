@@ -6,6 +6,7 @@ import {
 import { RootValue, GetGen, ArgsValue } from '@nexus/schema/dist/core'
 import { GraphQLResolveInfo } from 'graphql'
 import * as yup from 'yup'
+import { UserInputError } from 'apollo-server'
 
 const ValidateResolverImport = printedGenTypingImport({
   module: '../nexusPluginValidate',
@@ -30,30 +31,63 @@ export type ValidateResolver<
   args: ArgsValue<TypeName, FieldName>,
   context: GetGen<'context'>,
   info: GraphQLResolveInfo,
-) => boolean | { errors: string[] }
+) => any
 
 export const nexusPluginValidate = plugin({
   name: 'nexusPluginValidate',
   fieldDefTypes: [validateResolver],
   onCreateFieldResolver(config) {
     return async (root, args, ctx, info, next) => {
+      const validationErrors: { [key: string]: string } = {}
+
       // validate function
       const validate = config.fieldConfig.extensions.nexus.config.validate
       if (validate) {
-        const result = validate(root, args, ctx, info)
+        try {
+          const result = validate(root, args, ctx, info)
+
+          if (result.validateSync) {
+            result.validateSync(args)
+          }
+
+          if (typeof result === 'boolean' && !result) {
+            throw new Error(`Validation failed on general validate function`)
+          }
+        } catch (error) {
+          validationErrors.validate = error.message
+        }
       }
 
       // args fields validate
       const argsConfig = config.fieldConfig.extensions.nexus.config.args
       Object.keys(argsConfig).forEach((key) => {
-        if (argsConfig[key].validate) {
-          const result = argsConfig[key].validate({
-            value: args[key],
-            context: ctx,
-            yup,
-          })
+        if (argsConfig[key].config.validate) {
+          try {
+            const result = argsConfig[key].config.validate({
+              value: args[key],
+              context: ctx,
+              yup,
+            })
+
+            if (result.validateSync) {
+              result.validateSync(args[key])
+            }
+
+            if (typeof result === 'boolean' && !result) {
+              throw new Error(`Validation failed on this argument`)
+            }
+          } catch (error) {
+            validationErrors[key] = error.message
+          }
         }
       })
+
+      if (Object.keys(validationErrors).length > 0) {
+        throw new UserInputError(
+          'Failed to complete your request due to validation errors',
+          { validationErrors },
+        )
+      }
 
       return await next(root, args, ctx, info)
     }

@@ -21,7 +21,7 @@ type Validate = {
     value: any
     yup: typeof yup
     context: GetGen<'context'>
-  }) => boolean | { errors: string[] }
+  }) => any
 }
 
 export function arg<T extends AllInputTypes>(

@@ -1,5 +1,5 @@
 import { objectType, queryField } from '@nexus/schema'
-import { arg } from '../args'
+import { intArg, stringArg } from '../args'
 
 export const User = objectType({
   name: 'User',
@@ -11,16 +11,26 @@ export const User = objectType({
 })
 
 export const Query = queryField('me', {
-  type: 'User',
-  validate(root, args, ctx, info) {
-    return true
+  type: 'Int',
+  validate(root, args, { yup }, info) {
+    return yup.object({
+      id: yup.number().min(2).max(3),
+      name: yup.string().min(2).max(3),
+    })
   },
   args: {
-    id: arg({
-      type: 'String',
+    id: intArg({
       validate({ value, yup }) {
-        return yup.number().min(2).max(3).isValidSync(value)
+        return yup.number().min(2).max(3).validateSync(value)
       },
     }),
+    name: stringArg({
+      validate({ value, yup }) {
+        return yup.string().min(2).max(3).isValidSync(value)
+      },
+    }),
+  },
+  resolve(_root, { id }) {
+    return id
   },
 })

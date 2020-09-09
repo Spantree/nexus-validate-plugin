@@ -1,4 +1,7 @@
+import * as yup from 'yup'
+
 export interface Context {
+  yup: typeof yup
   db: {
     users: {
       id: string
@@ -17,5 +20,6 @@ const db: Context['db'] = { users: [], posts: [] }
 export function createContext(): Context {
   return {
     db,
+    yup,
   }
 }
