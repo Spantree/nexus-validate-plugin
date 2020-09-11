@@ -42,6 +42,7 @@ export const nexusPluginValidate = plugin({
 
       // validate function
       const validate = config.fieldConfig.extensions.nexus.config.validate
+      const name = config.fieldConfig.extensions.nexus.config.name
       if (validate) {
         try {
           const result = validate(root, args, ctx, info)
@@ -58,7 +59,7 @@ export const nexusPluginValidate = plugin({
             throw new Error(result)
           }
         } catch (error) {
-          validationErrors.validate = error.message
+          validationErrors[name] = error.message
         }
       }
 
