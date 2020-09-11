@@ -1,5 +1,5 @@
 import { objectType, queryField } from '@nexus/schema'
-import { intArg, stringArg } from '../args'
+import { intArg, stringArg } from '@spantree/nexus-validation'
 
 export const User = objectType({
   name: 'User',
@@ -27,6 +27,13 @@ export const Query = queryField('me', {
     name: stringArg({
       validate({ value, yup }) {
         return yup.string().min(2).max(3).isValidSync(value)
+      },
+    }),
+    email: stringArg({
+      validate({ value }) {
+        if (!value.includes('@')) {
+          return 'invalid email'
+        }
       },
     }),
   },

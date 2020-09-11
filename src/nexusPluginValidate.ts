@@ -9,7 +9,7 @@ import * as yup from 'yup'
 import { UserInputError } from 'apollo-server'
 
 const ValidateResolverImport = printedGenTypingImport({
-  module: '../nexusPluginValidate',
+  module: '@spantree/nexus-validation',
   bindings: ['ValidateResolver'],
 })
 
@@ -46,12 +46,16 @@ export const nexusPluginValidate = plugin({
         try {
           const result = validate(root, args, ctx, info)
 
-          if (result.validateSync) {
+          if (result && result.validateSync) {
             result.validateSync(args)
           }
 
           if (typeof result === 'boolean' && !result) {
             throw new Error(`Validation failed on general validate function`)
+          }
+
+          if (typeof result === 'string' && result !== '') {
+            throw new Error(result)
           }
         } catch (error) {
           validationErrors.validate = error.message
@@ -69,12 +73,16 @@ export const nexusPluginValidate = plugin({
               yup,
             })
 
-            if (result.validateSync) {
+            if (result && result.validateSync) {
               result.validateSync(args[key])
             }
 
             if (typeof result === 'boolean' && !result) {
               throw new Error(`Validation failed on this argument`)
+            }
+
+            if (typeof result === 'string' && result !== '') {
+              throw new Error(result)
             }
           } catch (error) {
             validationErrors[key] = error.message
