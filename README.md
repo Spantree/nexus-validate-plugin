@@ -1,6 +1,6 @@
 ## @spantree/nexus-validation
 
-It's a private nexus plugin package to add validation on user input valuse using [yup](https://github.com/jquense/yup) package or any other package
+It's a private nexus plugin package to add validation on user input values using [yup](https://github.com/jquense/yup) package or any other package
 
 ### Install
 
@@ -41,24 +41,10 @@ export const schema = makeSchema({
 
 **Args**
 
-import `intArg`, `stringArg`, `booleanArg`, `floatArg`, `idArg`, `arg` from our package `@spantree/nexus-validation` instead of `@nexus/schema` to get validate outo complete
-
-```ts
-import {
-  intArg,
-  stringArg,
-  booleanArg,
-  floatArg,
-  idArg,
-  arg,
-} from '@spantree/nexus-validation'
-```
-
 ## Usage
 
 ```ts
-import { objectType, queryField } from '@nexus/schema'
-import { intArg, stringArg } from '@spantree/nexus-validation'
+import { objectType, queryField, intArg, stringArg } from '@nexus/schema'
 
 export const User = objectType({
   name: 'User',
@@ -87,7 +73,7 @@ export const Query = queryField('me', {
     }),
     name: stringArg({
       validate({ value, yup }) {
-        // return boolean. if false will throw fiexd message "Validation failed on this argument"
+        // return boolean. if false will throw fixed message "Validation failed on this argument"
         return yup.string().min(2).max(3).isValidSync(value)
       },
     }),
