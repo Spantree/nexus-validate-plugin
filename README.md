@@ -27,14 +27,9 @@ export const schema = makeSchema({
     schema: __dirname + '/generated/schema.graphql',
     typegen: __dirname + '/generated/nexus.ts',
   },
-  typegenAutoConfig: {
-    sources: [
-      {
-        source: require.resolve('./context'),
-        alias: 'Context',
-      },
-    ],
-    contextType: 'Context.Context',
+  contextType: {
+    module: join(__dirname, 'context.ts'),
+    export: 'Context',
   },
 })
 ```
@@ -49,9 +44,9 @@ import { objectType, queryField, intArg, stringArg } from 'nexus'
 export const User = objectType({
   name: 'User',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.string('email', { nullable: false })
-    t.string('name', { nullable: true })
+    t.nonNull.int('id')
+    t.nonNull.string('email')
+    t.string('name')
   },
 })
 
