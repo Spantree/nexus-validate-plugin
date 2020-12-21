@@ -1,4 +1,4 @@
-import { objectType, queryField, intArg, stringArg } from '@nexus/schema'
+import { objectType, queryField, intArg, stringArg } from 'nexus'
 
 export const User = objectType({
   name: 'User',

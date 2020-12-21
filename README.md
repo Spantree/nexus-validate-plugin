@@ -17,7 +17,7 @@ npm i @spantree/nexus-validation
 **nexusPluginValidate** plugin
 
 ```ts
-import { makeSchema } from '@nexus/schema'
+import { makeSchema } from 'nexus'
 import { nexusPluginValidate } from '@spantree/nexus-validation'
 
 export const schema = makeSchema({
@@ -44,7 +44,7 @@ export const schema = makeSchema({
 ## Usage
 
 ```ts
-import { objectType, queryField, intArg, stringArg } from '@nexus/schema'
+import { objectType, queryField, intArg, stringArg } from 'nexus'
 
 export const User = objectType({
   name: 'User',

@@ -12,7 +12,7 @@
     "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server"
   },
   "dependencies": {
-    "@nexus/schema": "0.19.2",
+    "nexus": "1.0.0",
     "apollo-server": "2.19.0",
     "graphql": "15.4.0"
   },

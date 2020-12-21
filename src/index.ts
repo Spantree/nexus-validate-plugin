@@ -1,9 +1,6 @@
-import { plugin } from '@nexus/schema'
-import {
-  printedGenTyping,
-  printedGenTypingImport,
-} from '@nexus/schema/dist/utils'
-import { RootValue, GetGen, ArgsValue } from '@nexus/schema/dist/core'
+import { plugin } from 'nexus'
+import { printedGenTyping, printedGenTypingImport } from 'nexus/dist/utils'
+import { SourceValue, GetGen, ArgsValue } from 'nexus/dist/core'
 import { GraphQLResolveInfo } from 'graphql'
 import * as yup from 'yup'
 import { UserInputError } from 'apollo-server'
@@ -27,7 +24,7 @@ export type ValidateResolver<
   TypeName extends string,
   FieldName extends string
 > = (
-  root: RootValue<TypeName>,
+  root: SourceValue<TypeName>,
   args: ArgsValue<TypeName, FieldName>,
   context: GetGen<'context'>,
   info: GraphQLResolveInfo,
