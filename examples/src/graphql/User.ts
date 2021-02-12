@@ -1,5 +1,5 @@
 import { objectType, queryField } from '@nexus/schema'
-import { intArg, stringArg } from '@spantree/nexus-validation'
+import { intArg, stringArg } from 'nexus-validate-plugin'
 
 export const User = objectType({
   name: 'User',

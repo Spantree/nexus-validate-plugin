@@ -1,6 +1,6 @@
 import { makeSchema } from '@nexus/schema'
 import * as types from './graphql'
-import { nexusPluginValidate } from '@spantree/nexus-validation'
+import { nexusPluginValidate } from 'nexus-validate-plugin'
 
 export const schema = makeSchema({
   types,

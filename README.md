@@ -1,15 +1,15 @@
-## @spantree/nexus-validation
+## nexus-validate-plugin
 
-It's a private nexus plugin package to add validation on user input valuse using [yup](https://github.com/jquense/yup) package or any other package
+A [Nexus](https://nexusjs.org/) plugin to validate user input with
+[yup](https://github.com/jquense/yup).
 
 ### Install
 
-You must have an account in @spantree Org to install this plugin
 
 ```shell
-yarn add @spantree/nexus-validation
-or
-npm i @spantree/nexus-validation
+yarn add nexus-validate-plugin
+# or
+npm i nexus-validate-plugin
 ```
 
 ## API
@@ -18,7 +18,7 @@ npm i @spantree/nexus-validation
 
 ```ts
 import { makeSchema } from '@nexus/schema'
-import { nexusPluginValidate } from '@spantree/nexus-validation'
+import { nexusPluginValidate } from 'nexus-validate-plugin'
 
 export const schema = makeSchema({
   types,
@@ -41,7 +41,7 @@ export const schema = makeSchema({
 
 **Args**
 
-import `intArg`, `stringArg`, `booleanArg`, `floatArg`, `idArg`, `arg` from our package `@spantree/nexus-validation` instead of `@nexus/schema` to get validate outo complete
+import `intArg`, `stringArg`, `booleanArg`, `floatArg`, `idArg`, `arg` from `nexus-validate-plugin` instead of `@nexus/schema` to get validate auto complete
 
 ```ts
 import {
@@ -51,14 +51,14 @@ import {
   floatArg,
   idArg,
   arg,
-} from '@spantree/nexus-validation'
+} from 'nexus-validate-plugin'
 ```
 
 ## Usage
 
 ```ts
 import { objectType, queryField } from '@nexus/schema'
-import { intArg, stringArg } from '@spantree/nexus-validation'
+import { intArg, stringArg } from 'nexus-validate-plugin'
 
 export const User = objectType({
   name: 'User',

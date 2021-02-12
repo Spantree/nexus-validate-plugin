@@ -1,5 +1,5 @@
 {
-  "name": "@spantree/nexus-validation",
+  "name": "nexus-validate-plugin",
   "version": "0.0.4",
   "main": "dist/index.js",
   "module": "dist/nexus.esm.js",
@@ -32,7 +32,7 @@
     "semi": false,
     "trailingComma": "all"
   },
-  "repository": "git@github.com:Spantree/nexus-validation-plugin.git",
+  "repository": "git@github.com:Spantree/nexus-validate-plugin.git",
   "author": "Ahmed Elywa",
   "publishConfig": {
     "access": "restricted"
