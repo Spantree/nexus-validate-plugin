@@ -1,15 +1,15 @@
-## @spantree/nexus-validation
+## nexus-validate-plugin
 
-It's a private nexus plugin package to add validation on user input values using [yup](https://github.com/jquense/yup) package or any other package
+A [Nexus](https://nexusjs.org/) plugin to validate user input with
+[yup](https://github.com/jquense/yup).
 
 ### Install
 
-You must have an account in @spantree Org to install this plugin
 
 ```shell
-yarn add @spantree/nexus-validation
-or
-npm i @spantree/nexus-validation
+yarn add nexus-validate-plugin
+# or
+npm i nexus-validate-plugin
 ```
 
 ## API
@@ -17,8 +17,8 @@ npm i @spantree/nexus-validation
 **nexusPluginValidate** plugin
 
 ```ts
-import { makeSchema } from 'nexus'
-import { nexusPluginValidate } from '@spantree/nexus-validation'
+import { makeSchema } from '@nexus/schema'
+import { nexusPluginValidate } from 'nexus-validate-plugin'
 
 export const schema = makeSchema({
   types,

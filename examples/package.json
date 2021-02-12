@@ -1,5 +1,5 @@
 {
-  "name": "nexus-federation-plugin",
+  "name": "nexus-validate-plugin-example",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "nexus": "1.0.0",
+    "nexus-validate-plugin": "file:..",
     "apollo-server": "2.19.0",
     "graphql": "15.4.0"
   },
@@ -28,6 +29,6 @@
     "semi": false,
     "trailingComma": "all"
   },
-  "repository": "git@github.com:Spantree/nexus-federation-plugin.git",
+  "repository": "git@github.com:Spantree/nexus-validate-plugin.git",
   "author": "Ahmed Elywa"
 }
