@@ -1,12 +1,12 @@
-import { objectType, queryField } from '@nexus/schema'
+import { objectType, queryField, intArg, stringArg } from 'nexus'
 import { intArg, stringArg } from 'nexus-validate-plugin'
 
 export const User = objectType({
   name: 'User',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.string('email', { nullable: false })
-    t.string('name', { nullable: true })
+    t.nonNull.int('id')
+    t.nonNull.string('email')
+    t.string('name')
   },
 })
 

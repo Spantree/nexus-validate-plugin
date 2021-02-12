@@ -1,9 +1,9 @@
-import { objectType } from '@nexus/schema'
+import { objectType } from 'nexus'
 
 export const Post = objectType({
   name: 'Post',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.string('body', { nullable: false })
+    t.nonNull.int('id')
+    t.nonNull.string('body')
   },
 })

@@ -27,45 +27,26 @@ export const schema = makeSchema({
     schema: __dirname + '/generated/schema.graphql',
     typegen: __dirname + '/generated/nexus.ts',
   },
-  typegenAutoConfig: {
-    sources: [
-      {
-        source: require.resolve('./context'),
-        alias: 'Context',
-      },
-    ],
-    contextType: 'Context.Context',
+  contextType: {
+    module: join(__dirname, 'context.ts'),
+    export: 'Context',
   },
 })
 ```
 
 **Args**
 
-import `intArg`, `stringArg`, `booleanArg`, `floatArg`, `idArg`, `arg` from `nexus-validate-plugin` instead of `@nexus/schema` to get validate auto complete
-
-```ts
-import {
-  intArg,
-  stringArg,
-  booleanArg,
-  floatArg,
-  idArg,
-  arg,
-} from 'nexus-validate-plugin'
-```
-
 ## Usage
 
 ```ts
-import { objectType, queryField } from '@nexus/schema'
-import { intArg, stringArg } from 'nexus-validate-plugin'
+import { objectType, queryField, intArg, stringArg } from 'nexus'
 
 export const User = objectType({
   name: 'User',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.string('email', { nullable: false })
-    t.string('name', { nullable: true })
+    t.nonNull.int('id')
+    t.nonNull.string('email')
+    t.string('name')
   },
 })
 
@@ -87,7 +68,7 @@ export const Query = queryField('me', {
     }),
     name: stringArg({
       validate({ value, yup }) {
-        // return boolean. if false will throw fiexd message "Validation failed on this argument"
+        // return boolean. if false will throw fixed message "Validation failed on this argument"
         return yup.string().min(2).max(3).isValidSync(value)
       },
     }),
