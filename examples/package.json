@@ -29,6 +29,6 @@
     "semi": false,
     "trailingComma": "all"
   },
-  "repository": "git@github.com:Spantree/nexus-federation-plugin.git",
+  "repository": "git@github.com:Spantree/nexus-validate-plugin.git",
   "author": "Ahmed Elywa"
 }
