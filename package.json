@@ -1,6 +1,6 @@
 {
   "name": "nexus-validate-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "module": "dist/nexus.esm.js",
   "types": "dist/index.d.ts",
@@ -19,8 +19,8 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@types/node": "12.12.54",
     "@nexus/schema": "0.15.0",
+    "@types/node": "12.12.54",
     "apollo-server": "2.16.1",
     "graphql": "15.3.0",
     "prettier": "2.0.5",
@@ -34,9 +34,6 @@
   },
   "repository": "git@github.com:Spantree/nexus-validate-plugin.git",
   "author": "Ahmed Elywa",
-  "publishConfig": {
-    "access": "restricted"
-  },
   "files": [
     "dist"
   ]
