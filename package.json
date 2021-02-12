@@ -1,6 +1,6 @@
 {
   "name": "nexus-validate-plugin",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/index.js",
   "module": "dist/nexus.esm.js",
   "types": "dist/index.d.ts",
