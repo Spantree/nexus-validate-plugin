@@ -1,5 +1,4 @@
 import { objectType, queryField, intArg, stringArg } from 'nexus'
-import { intArg, stringArg } from 'nexus-validate-plugin'
 
 export const User = objectType({
   name: 'User',
