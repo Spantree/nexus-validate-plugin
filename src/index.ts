@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import { UserInputError } from 'apollo-server'
 
 const ValidateResolverImport = printedGenTypingImport({
-  module: '@spantree/nexus-validation',
+  module: 'nexus-validate-plugin',
   bindings: ['ValidateResolver'],
 })
 
@@ -31,7 +31,7 @@ export type ValidateResolver<
 ) => any
 
 const ValidateArgsImport = printedGenTypingImport({
-  module: '@spantree/nexus-validation',
+  module: 'nexus-validate-plugin',
   bindings: ['ValidateArgs'],
 })
 
