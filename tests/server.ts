@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server'
 import { objectType, queryField, intArg, stringArg, makeSchema } from 'nexus'
-import { nexusPluginValidate } from '../index'
+import { nexusPluginValidate } from '../src/index'
 import { join } from 'path'
 import * as yup from 'yup'
 

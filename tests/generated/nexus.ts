@@ -4,7 +4,7 @@
  */
 
 import { Context } from './../server'
-import { ValidateResolver, ValidateArgs } from '../../index'
+import { ValidateResolver, ValidateArgs } from '../../src/index'
 
 declare global {
   interface NexusGen extends NexusGenTypes {}
